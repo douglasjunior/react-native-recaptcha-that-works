@@ -6,6 +6,10 @@
 
 A reCAPTCHA library for React Native (Android and iOS) that works.
 
+| Normal | Invisible |
+| - | - |
+| <img src='https://raw.githubusercontent.com/douglasjunior/react-native-recaptcha-that-works/master/screenshots/normal.gif' width='240' /> | <img src='https://raw.githubusercontent.com/douglasjunior/react-native-recaptcha-that-works/master/screenshots/invisible.gif' width='240' /> |
+
 ## Install 
 
 ### Install the module 
@@ -59,6 +63,8 @@ class App extends Component {
 
 }
 ```
+
+For more details, see the [Sample Project](https://github.com/douglasjunior/react-native-recaptcha-that-works/blob/master/Sample/src/App.js).
 
 ## Props
 

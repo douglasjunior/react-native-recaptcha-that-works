@@ -1,6 +1,6 @@
 {
   "name": "react-native-recaptcha-that-works",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "description": "⚛ A reCAPTCHA bridge for React Native that works.",
 	"repository": {

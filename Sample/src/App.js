@@ -44,7 +44,7 @@ const App = () => {
         <View
           contentInsetAdjustmentBehavior="automatic"
           style={styles.container}>
-          <Button onPress={handleOpenPress} title="Abrir Recaptcha" />
+          <Button onPress={handleOpenPress} title="Open" />
           <Text>Token: {key}</Text>
           <Text>Size: {size}</Text>
         </View>
@@ -52,7 +52,7 @@ const App = () => {
         <Recaptcha
           ref={$recaptcha}
           lang="en"
-          headerComponent={<Button title="Fechar" onPress={handleClosePress} />}
+          headerComponent={<Button title="Close" onPress={handleClosePress} />}
           siteKey="6LejsqwZAAAAAGsmSDWH5g09dOyNoGMcanBllKPF"
           baseUrl="http://127.0.0.1"
           size={size}
