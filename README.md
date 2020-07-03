@@ -81,7 +81,7 @@ Note: If `lang` is not set, then device language is used.
 ## Methods
 
 |Name|Type|Description|
-|-|-|-|-|
+|-|-|-|
 |open|`function`|Open the reCAPTCHA Modal.|
 |close|`function`|Close the reCAPTCHA Modal.|
 
