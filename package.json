@@ -1,8 +1,8 @@
 {
   "name": "react-native-recaptcha-that-works",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
-  "description": "",
+  "description": "⚛ A reCAPTCHA bridge for React Native that works.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/douglasjunior/react-native-recaptcha-that-works.git"
