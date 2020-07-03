@@ -50,8 +50,9 @@ const App = () => {
         </View>
 
         <Recaptcha
-          headerComponent={<Button title="Fechar" onPress={handleClosePress} />}
           ref={$recaptcha}
+          lang="en"
+          headerComponent={<Button title="Fechar" onPress={handleClosePress} />}
           siteKey="6LejsqwZAAAAAGsmSDWH5g09dOyNoGMcanBllKPF"
           baseUrl="http://127.0.0.1"
           size={size}

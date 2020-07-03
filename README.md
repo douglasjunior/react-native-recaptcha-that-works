@@ -64,6 +64,7 @@ class App extends Component {
 
 |Name|Value|Default|Description|
 |-|-|-|-|
+|lang|`string`||[Language code](https://developers.google.com/recaptcha/docs/language).|
 |siteKey|`string`||Your sitekey.|
 |baseUrl|`string`||The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
 |headerComponent|`React Element`||A component to render on top of Modal.|
@@ -75,6 +76,8 @@ class App extends Component {
 |onError|`function(error)`||A callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry.|
 |onClose|`function()`|| A callback function, executed when the Modal is closed.|
 
+Note: If `lang` is not set, then device language is used.
+
 ## Methods
 
 |Name|Type|Description|
@@ -82,7 +85,7 @@ class App extends Component {
 |open|`function`|Open the reCAPTCHA Modal.|
 |close|`function`|Close the reCAPTCHA Modal.|
 
-Note: If using `size="invisible"`, then the challange will be called automatically when the Modal is opened.
+Note: If using `size="invisible"`, then challange run automatically when `open` is called.
 
 ## reCAPTCHA v2 docs
 

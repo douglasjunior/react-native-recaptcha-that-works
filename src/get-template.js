@@ -25,13 +25,13 @@
 const getTemplate = (params) => {
   let template = `
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="{{lang}}">
     
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title></title>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js?hl={{lang}}" async defer></script>
         <script>
             const siteKey = '{{siteKey}}';
             const theme = '{{theme}}';
@@ -175,8 +175,8 @@ const getTemplate = (params) => {
 
   Object.entries(params)
     .forEach(([key, value]) => {
-      template = template.replace(`{{${key}}}`, value);
-    })
+      template = template.replace(new RegExp(`{{${key}}}`, 'img'), value);
+    });
 
   return template;
 };

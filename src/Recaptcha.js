@@ -70,6 +70,7 @@ const Recaptcha = forwardRef(
       size,
       siteKey,
       baseUrl,
+      lang,
     },
     $ref,
   ) => {
@@ -84,9 +85,10 @@ const Recaptcha = forwardRef(
       return getTemplate({
         siteKey,
         size,
-        theme
+        theme,
+        lang,
       });
-    }, [siteKey, size, theme]);
+    }, [siteKey, size, theme, lang]);
 
     const handleLoad = useCallback(
       (...args) => {
