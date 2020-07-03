@@ -42,7 +42,7 @@ import getTemplate from './get-template';
 const styles = StyleSheet.create({
   webView: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   loading: {
     position: 'absolute',
@@ -56,6 +56,10 @@ const styles = StyleSheet.create({
 });
 
 const originWhitelist = ['*'];
+const handleShouldStartLoadWithRequest = () => {
+  // prevent navigation on iOS
+  return false;
+}
 
 const Recaptcha = forwardRef(
   (
@@ -71,6 +75,7 @@ const Recaptcha = forwardRef(
       siteKey,
       baseUrl,
       lang,
+      style,
     },
     $ref,
   ) => {
@@ -166,6 +171,15 @@ const Recaptcha = forwardRef(
       [handleClose],
     );
 
+    const handleNavigationStateChange = useCallback(() => {
+      // prevent navigation on Android
+      if (!loading) {
+        $webView.current.stopLoading();
+      }
+    }, [loading]);
+
+    const webViewStyles = useMemo(() => [styles.webView, style], [style]);
+
     const renderLoading = () => {
       if (!loading && source) {
         return null;
@@ -184,8 +198,12 @@ const Recaptcha = forwardRef(
           ref={$webView}
           originWhitelist={originWhitelist}
           source={source}
-          style={styles.webView}
+          style={webViewStyles}
           onMessage={handleMessage}
+          allowsBackForwardNavigationGestures={false}
+          onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
+          onNavigationStateChange={handleNavigationStateChange}
+          bounces={false}
         />
         {renderLoading()}
       </Modal>

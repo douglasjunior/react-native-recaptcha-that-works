@@ -157,7 +157,6 @@ const getTemplate = (params) => {
     
             .container {
                 display: flex;
-                background-color: rgba(0, 0, 0, 0.5);
                 justify-content: center;
                 align-items: center;
             }
