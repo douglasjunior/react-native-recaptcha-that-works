@@ -56,10 +56,6 @@ const styles = StyleSheet.create({
 });
 
 const originWhitelist = ['*'];
-const handleShouldStartLoadWithRequest = () => {
-  // prevent navigation on iOS
-  return false;
-}
 
 const Recaptcha = forwardRef(
   (
@@ -102,9 +98,8 @@ const Recaptcha = forwardRef(
           $webView.current.injectJavaScript(`
             window.rnRecaptcha.execute();
           `);
-        } else {
-          setLoading(false);
         }
+        setLoading(false);
       },
       [onLoad, isInvisible],
     );
@@ -176,6 +171,11 @@ const Recaptcha = forwardRef(
       if (!loading) {
         $webView.current.stopLoading();
       }
+    }, [loading]);
+
+    const handleShouldStartLoadWithRequest = useCallback(event => {
+      // prevent navigation on iOS
+      return event.navigationType === 'other';
     }, [loading]);
 
     const webViewStyles = useMemo(() => [styles.webView, style], [style]);
