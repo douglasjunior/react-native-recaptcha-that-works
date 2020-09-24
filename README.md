@@ -29,16 +29,21 @@ _See the `react-native-webview` [Getting Started Guide](https://github.com/react
 ## Usage
 
 ```jsx
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { View, Button } from 'react-native';
 
 import Recaptcha from 'react-native-recaptcha-that-works';
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        this.recaptcha = createRef();
+    }
+
     send = () => {
         console.log('send!');
-        this.recaptcha.open();
+        this.recaptcha.current.open();
     }
 
     onVerify = token => {
@@ -53,7 +58,7 @@ class App extends Component {
         return (
             <View>
                 <Recaptcha
-                    ref={ref = this.recaptcha = ref}
+                    ref={this.recaptcha}
                     siteKey="<your-recaptcha-public-key>"
                     baseUrl="http://my.domain.com"
                     onVerify={this.onVerify}
