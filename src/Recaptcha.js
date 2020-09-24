@@ -93,7 +93,9 @@ const Recaptcha = forwardRef(
 
     const handleLoad = useCallback(
       (...args) => {
-        onLoad(...args);
+        if(onLoad){
+          onLoad(...args);
+        }
         if (isInvisible) {
           $webView.current.injectJavaScript(`
             window.rnRecaptcha.execute();
