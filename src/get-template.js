@@ -23,7 +23,7 @@
 */
 
 const getTemplate = (params) => {
-  let template = `
+    let template = `
     <!DOCTYPE html>
     <html lang="{{lang}}">
     
@@ -172,12 +172,12 @@ const getTemplate = (params) => {
     </html>`;
 
 
-  Object.entries(params)
-    .forEach(([key, value]) => {
-      template = template.replace(new RegExp(`{{${key}}}`, 'img'), value);
-    });
+    Object.entries(params)
+        .forEach(([key, value]) => {
+            template = template.replace(new RegExp(`{{${key}}}`, 'img'), value);
+        });
 
-  return template;
+    return template;
 };
 
 export default getTemplate;

@@ -1,33 +1,29 @@
 {
   "name": "react-native-recaptcha-that-works",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "⚛ A reCAPTCHA bridge for React Native that works.",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/douglasjunior/react-native-recaptcha-that-works.git"
-	},
-	"main": "index.js",
-	"keywords": [
-		"react-native",
-		"ios",
-		"android",
-		"recaptcha"
-	],
-	"author": {
-		"name": "Douglas Nassif Roma Junior",
-		"email": "nassifrroma@gmail.com",
-		"url": "http://smarppy.com"
-	},
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/douglasjunior/react-native-recaptcha-that-works/issues"
-	},
-	"homepage": "https://github.com/douglasjunior/react-native-recaptcha-that-works",
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
-	},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/douglasjunior/react-native-recaptcha-that-works.git"
+  },
+  "main": "index.js",
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "recaptcha"
+  ],
+  "author": {
+    "name": "Douglas Nassif Roma Junior",
+    "email": "nassifrroma@gmail.com",
+    "url": "http://smarppy.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/douglasjunior/react-native-recaptcha-that-works/issues"
+  },
+  "homepage": "https://github.com/douglasjunior/react-native-recaptcha-that-works",
   "peerDependencies": {
     "react": ">=16.9.0",
     "react-native": ">=0.60.0",
