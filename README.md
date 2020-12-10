@@ -24,7 +24,7 @@ Or
   npm i -S react-native-recaptcha-that-works react-native-webview
 ```
 
-_See the `react-native-webview` [Getting Started Guide](https://github.com/react-native-community/react-native-webview/blob/master/docs/Getting-Started.md)._
+_See the [`react-native-webview` Getting Started Guide](https://github.com/react-native-community/react-native-webview/blob/master/docs/Getting-Started.md)._
 
 ## Usage
 
