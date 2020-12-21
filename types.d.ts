@@ -24,22 +24,24 @@
 import React, { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
 export declare type Props = {
-    headerComponent?: ReactNode;
-    onVerify?: (token: string) => void;
-    onExpire?: () => void;
-    onError?: (error: string) => void;
-    onClose?: () => void;
-    onLoad?: () => void;
-    theme?: "dark" | "light";
-    size?: "invisible" | "normal" | "compact";
-    siteKey: string;
-    baseUrl: string;
-    lang?: string;
-    style?: StyleProp<ViewStyle>;
+  headerComponent?: ReactNode;
+  onVerify?: (token: string) => void;
+  onExpire?: () => void;
+  onError?: (error: string) => void;
+  onClose?: () => void;
+  onLoad?: () => void;
+  theme?: "dark" | "light";
+  size?: "invisible" | "normal" | "compact";
+  siteKey: string;
+  baseUrl: string;
+  lang?: string;
+  style?: StyleProp<ViewStyle>;
 };
 export declare type Handles = {
-    open(): void;
-    close(): void;
+  open(): void;
+  close(): void;
 };
-declare const Recaptcha: React.ForwardRefExoticComponent<Props & React.RefAttributes<Handles>>;
+declare const Recaptcha: React.ForwardRefExoticComponent<
+  Props & React.RefAttributes<Handles>
+>;
 export default Recaptcha;
