@@ -8,6 +8,7 @@
     "url": "https://github.com/douglasjunior/react-native-recaptcha-that-works.git"
   },
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "react-native",
     "ios",
