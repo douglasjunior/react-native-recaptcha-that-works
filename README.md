@@ -107,6 +107,42 @@ Note: If using `size="invisible"`, then challange run automatically when `open` 
 - [I'm not a robot](https://developers.google.com/recaptcha/docs/display)
 - [Invisible](https://developers.google.com/recaptcha/docs/invisible)
 
+## TypeScript
+
+Example usage in TypeScript project:
+
+```tsx
+import Recaptcha, { Handles } from "react-native-recaptcha-that-works";
+
+// ...
+
+export const Component: React.FC = () => {
+    const recaptcha = React.useRef<Handles>(null);
+
+    const send = () => {
+        console.log('send!');
+        recaptcha.current?.open();
+    };
+
+    const onVerify = (token: string) => {
+        console.log('success!', token);
+    };
+
+    return (
+        <View>
+            <Recaptcha
+                ref={recaptcha}
+                siteKey="<your-recaptcha-public-key>"
+                baseUrl="http://my.domain.com"
+                onVerify={onVerify}
+                size="invisible"
+            />
+            <Button title="Send" onPress={send} />
+        </View>
+    );
+};
+```
+
 ## Contribute
 
 New features, bug fixes and improvements are welcome! For questions and suggestions use the [issues](https://github.com/douglasjunior/react-native-recaptcha-that-works/issues).
