@@ -21,27 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 import React, { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
-export declare type Props = {
-  headerComponent?: ReactNode;
-  onVerify?: (token: string) => void;
-  onExpire?: () => void;
-  onError?: (error: string) => void;
-  onClose?: () => void;
-  onLoad?: () => void;
-  theme?: "dark" | "light";
-  size?: "invisible" | "normal" | "compact";
-  siteKey: string;
-  baseUrl: string;
-  lang?: string;
-  style?: StyleProp<ViewStyle>;
+
+export declare type RecaptchaProps = {
+    headerComponent?: ReactNode;
+    onVerify?: (token: string) => void;
+    onExpire?: () => void;
+    onError?: (error: string) => void;
+    onClose?: () => void;
+    onLoad?: () => void;
+    theme?: "dark" | "light";
+    size?: "invisible" | "normal" | "compact";
+    siteKey: string;
+    baseUrl: string;
+    lang?: string;
+    style?: StyleProp<ViewStyle>;
 };
-export declare type Handles = {
-  open(): void;
-  close(): void;
+
+export declare type RecaptchaHandles = {
+    open(): void;
+    close(): void;
 };
+
 declare const Recaptcha: React.ForwardRefExoticComponent<
-  Props & React.RefAttributes<Handles>
+    RecaptchaProps & React.RefAttributes<RecaptchaHandles>
 >;
+
 export default Recaptcha;

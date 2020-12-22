@@ -28,50 +28,91 @@ _See the [`react-native-webview` Getting Started Guide](https://github.com/react
 
 ## Usage
 
+With <strong>JavaScript</strong>:
+
 ```jsx
-import React, { Component, createRef } from 'react';
+import React, { useRef } from 'react';
 import { View, Button } from 'react-native';
 
 import Recaptcha from 'react-native-recaptcha-that-works';
 
-class App extends Component {
+const App = () => {
+    const recaptcha = useRef();
 
-    constructor(props) {
-        super(props);
-        this.recaptcha = createRef();
-    }
-
-    send = () => {
+    const send = () => {
         console.log('send!');
         this.recaptcha.current.open();
     }
 
-    onVerify = token => {
+    const onVerify = token => {
         console.log('success!', token);
     }
 
-    onExpire = () => {
+    const onExpire = () => {
         console.warn('expired!');
     }
 
-    render() {
-        return (
-            <View>
-                <Recaptcha
-                    ref={this.recaptcha}
-                    siteKey="<your-recaptcha-public-key>"
-                    baseUrl="http://my.domain.com"
-                    onVerify={this.onVerify}
-                    onExpire={this.onExpire}
-                    size="invisible"
-                />
-                <Button title="Send" onPress={this.send} />
-            </View>
-        )
-    }
-
+    return (
+        <View>
+            <Recaptcha
+                ref={recaptcha}
+                siteKey="<your-recaptcha-public-key>"
+                baseUrl="http://my.domain.com"
+                onVerify={onVerify}
+                onExpire={onExpire}
+                size="invisible"
+            />
+            <Button title="Send" onPress={send} />
+        </View>
+    );
 }
 ```
+
+<details>
+    <summary>Or with <strong>TypeScript</strong>:</summary>
+  
+```tsx
+import React, { useRef } from 'react';
+import { View, Button } from 'react-native';
+
+import Recaptcha, { RecaptchaHandles } from "react-native-recaptcha-that-works";
+
+// ...
+
+export const Component: React.FC = () => {
+    const recaptcha = useRef<RecaptchaHandles>();
+
+    const send = () => {
+        console.log('send!');
+        recaptcha.current?.open();
+    };
+
+    const onVerify = (token: string) => {
+        console.log('success!', token);
+    };
+
+    const onExpire = () => {
+        console.warn('expired!');
+    }
+
+    return (
+        <View>
+            <Recaptcha
+                ref={recaptcha}
+                siteKey="<your-recaptcha-public-key>"
+                baseUrl="http://my.domain.com"
+                onVerify={onVerify}
+                onExpire={onExpire}
+                size="invisible"
+            />
+            <Button title="Send" onPress={send} />
+        </View>
+    );
+};
+```
+</details>
+
+<br />
 
 For more details, see the [Sample Project](https://github.com/douglasjunior/react-native-recaptcha-that-works/blob/master/Sample/src/App.js) or try the [Online demo](https://snack.expo.io/@douglasjunior/a6aed2).
 
@@ -106,42 +147,6 @@ Note: If using `size="invisible"`, then challange run automatically when `open` 
 
 - [I'm not a robot](https://developers.google.com/recaptcha/docs/display)
 - [Invisible](https://developers.google.com/recaptcha/docs/invisible)
-
-## TypeScript
-
-Example usage in TypeScript project:
-
-```tsx
-import Recaptcha, { Handles } from "react-native-recaptcha-that-works";
-
-// ...
-
-export const Component: React.FC = () => {
-    const recaptcha = React.useRef<Handles>(null);
-
-    const send = () => {
-        console.log('send!');
-        recaptcha.current?.open();
-    };
-
-    const onVerify = (token: string) => {
-        console.log('success!', token);
-    };
-
-    return (
-        <View>
-            <Recaptcha
-                ref={recaptcha}
-                siteKey="<your-recaptcha-public-key>"
-                baseUrl="http://my.domain.com"
-                onVerify={onVerify}
-                size="invisible"
-            />
-            <Button title="Send" onPress={send} />
-        </View>
-    );
-};
-```
 
 ## Contribute
 
