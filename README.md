@@ -114,7 +114,7 @@ export const Component: React.FC = () => {
 
 <br />
 
-For more details, see the [Sample Project](https://github.com/douglasjunior/react-native-recaptcha-that-works/blob/master/Sample/src/App.js) or try the [Online demo](https://snack.expo.io/@douglasjunior/a6aed2).
+For more details, see the [Sample Project](https://github.com/douglasjunior/react-native-recaptcha-that-works/blob/master/Sample/src/App.js) or try the [Online demo](https://snack.expo.dev/@douglasjunior/react-native-recaptcha-that-works).
 
 ## Props
 
