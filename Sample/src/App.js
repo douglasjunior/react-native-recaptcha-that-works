@@ -1,4 +1,4 @@
-import React, {useRef, useCallback, useState} from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   Button,
 } from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Recaptcha from 'react-native-recaptcha-that-works';
 
 const styles = StyleSheet.create({
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
-  const size = 'normal';
+  const size = 'invisible';
   const [key, setKey] = useState('<none>');
 
   const $recaptcha = useRef();
@@ -38,39 +38,39 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.safeArea}>
-        <View
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.container}>
-          <Button onPress={handleOpenPress} title="Open" />
-          <Text>Token: {key}</Text>
-          <Text>Size: {size}</Text>
-        </View>
+      <View
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.container}>
+        <Button onPress={handleOpenPress} title="Open" />
+        <Text>Token: {key}</Text>
+        <Text>Size: {size}</Text>
+      </View>
 
-        <Recaptcha
-          ref={$recaptcha}
-          lang="en"
-          headerComponent={<Button title="Close" onPress={handleClosePress} />}
-          siteKey="6LejsqwZAAAAAGsmSDWH5g09dOyNoGMcanBllKPF"
-          baseUrl="http://127.0.0.1"
-          size={size}
-          theme="light"
-          onLoad={() => alert('onLoad event')}
-          onClose={() => alert('onClose event')}
-          onError={(err) => {
-            alert('onError event');
-            console.warn(err);
-          }}
-          onExpire={() => alert('onExpire event')}
-          onVerify={(token) => {
-            alert('onVerify event');
-            setKey(token);
-          }}
-        />
-      </SafeAreaView>
-    </>
+      <Recaptcha
+        ref={$recaptcha}
+        lang="pt"
+        headerComponent={<Button title="Close modal" onPress={handleClosePress} />}
+        footerComponent={<Text>Footer here</Text>}
+        siteKey="6LejsqwZAAAAAGsmSDWH5g09dOyNoGMcanBllKPF"
+        baseUrl="http://127.0.0.1"
+        size={size}
+        theme="dark"
+        onLoad={() => alert('onLoad event')}
+        onClose={() => alert('onClose event')}
+        onError={(err) => {
+          alert('onError event');
+          console.warn(err);
+        }}
+        onExpire={() => alert('onExpire event')}
+        onVerify={(token) => {
+          alert('onVerify event');
+          setKey(token);
+        }}
+        enterprise
+      />
+    </SafeAreaView>
   );
 };
 

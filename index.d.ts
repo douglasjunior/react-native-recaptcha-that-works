@@ -43,6 +43,7 @@ export declare type RecaptchaProps = {
     baseUrl: string;
     lang?: string;
     style?: StyleProp<ViewStyle>;
+    enterprise?: boolean;
 };
 
 export declare type RecaptchaHandles = {

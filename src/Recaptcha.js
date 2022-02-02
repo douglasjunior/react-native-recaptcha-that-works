@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
-    loading: {
+    loadingContainer: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -75,6 +75,7 @@ const Recaptcha = forwardRef(({
     baseUrl,
     lang,
     style,
+    enterprise,
 }, $ref,
 ) => {
     const $isClosed = useRef(true);
@@ -90,8 +91,8 @@ const Recaptcha = forwardRef(({
             size,
             theme,
             lang,
-        });
-    }, [siteKey, size, theme, lang]);
+        }, enterprise);
+    }, [siteKey, size, theme, lang, enterprise]);
 
     const handleLoad = useCallback((...args) => {
         onLoad && onLoad(...args);
@@ -117,10 +118,8 @@ const Recaptcha = forwardRef(({
     const handleMessage = useCallback((content) => {
         try {
             const payload = JSON.parse(content.nativeEvent.data);
-            if (payload.close) {
-                if (isInvisibleSize) {
-                    handleClose();
-                }
+            if (payload.close && isInvisibleSize) {
+                handleClose();
             }
             if (payload.load) {
                 handleLoad(...payload.load);
@@ -177,7 +176,7 @@ const Recaptcha = forwardRef(({
             return null;
         }
         return (
-            <View style={styles.loading}>
+            <View style={styles.loadingContainer}>
                 {loadingComponent || <ActivityIndicator size="large" />}
             </View>
         );
@@ -212,6 +211,7 @@ const Recaptcha = forwardRef(({
 Recaptcha.defaultProps = {
     size: 'normal',
     theme: 'light',
+    enterprise: false,
 };
 
 export default Recaptcha;

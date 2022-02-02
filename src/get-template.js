@@ -22,7 +22,15 @@
 * SOFTWARE. 
 */
 
-const getTemplate = (params) => {
+const getTemplate = (params, enterprise) => {
+    const grecaptcha = enterprise
+        ? 'window.grecaptcha.enterprise'
+        : 'window.grecaptcha';
+
+    const jsScript = enterprise
+        ? '<script src="https://www.google.com/recaptcha/enterprise.js?hl={{lang}}" async defer></script>'
+        : '<script src="https://www.google.com/recaptcha/api.js?hl={{lang}}" async defer></script>'
+
     let template = `
     <!DOCTYPE html>
     <html lang="{{lang}}">
@@ -31,7 +39,12 @@ const getTemplate = (params) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title></title>
-        <script src="https://www.google.com/recaptcha/api.js?hl={{lang}}" async defer></script>
+
+        <link rel="preconnect" href="https://www.google.com">
+        <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+
+        ${jsScript}
+
         <script>
             const siteKey = '{{siteKey}}';
             const theme = '{{theme}}';
@@ -72,7 +85,7 @@ const getTemplate = (params) => {
                 }));
             }
     
-            const isReady = () => Boolean(typeof window === 'object' && window.grecaptcha && window.grecaptcha.render);
+            const isReady = () => Boolean(typeof window === 'object' && window.grecaptcha && ${grecaptcha}.render);
     
             const registerOnCloseListener = () => {
                 if (onCloseObserver) {
@@ -106,7 +119,7 @@ const getTemplate = (params) => {
             }
     
             const renderRecaptcha = () => {
-                widget = window.grecaptcha.render('recaptcha-container', {
+                widget = ${grecaptcha}.render('recaptcha-container', {
                     sitekey: siteKey,
                     size,
                     theme,
@@ -133,13 +146,12 @@ const getTemplate = (params) => {
                 readyInterval = setInterval(updateReadyState, 1000);
             }
     
-            
             window.rnRecaptcha = {
                 execute: () => {
-                    window.grecaptcha.execute(widget);
+                    ${grecaptcha}.execute(widget);
                 },
                 reset: () => {
-                    window.grecaptcha.reset(widget);
+                    ${grecaptcha}.reset(widget);
                 },
             }
         </script>
@@ -170,7 +182,6 @@ const getTemplate = (params) => {
     </body>
     
     </html>`;
-
 
     Object.entries(params)
         .forEach(([key, value]) => {

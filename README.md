@@ -127,15 +127,16 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |modalProps|[Go to docs](https://reactnative.dev/docs/modal)||Override the Modal props.|
 |webViewProps|[Go to docs](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)||Override the WebView props.|
 |lang|`string`||[Language code](https://developers.google.com/recaptcha/docs/language).|
-|siteKey|`string`||Your sitekey.|
-|baseUrl|`string`||The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
+|siteKey|`string`||(Required) Your sitekey.|
+|baseUrl|`string`||(Required) The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
 |size|`'invisible'`, `'normal'` or `'compact'`|`'normal'`|The size of the widget.|
 |theme|`'dark'` or `'light'`|`'light'`|The color theme of the widget.|
 |onLoad|`function()`||A callback function, executed when the reCAPTCHA is ready to use.|
-|onVerify|`function(token)`||A callback function, executed when the user submits a successful response. The recaptcha response token is passed to your callback.|
+|onVerify|`function(token)`||(Required) A callback function, executed when the user submits a successful response. The recaptcha response token is passed to your callback.|
 |onExpire|`function()`||A callback function, executed when the reCAPTCHA response expires and the user needs to re-verify.|
 |onError|`function(error)`||A callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry.|
 |onClose|`function()`|| A callback function, executed when the Modal is closed.|
+|enterprise|`boolean`|`false`| (Experimental) Use the new [reCaptcha Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
 
 Note: If `lang` is not set, then device language is used.
 
@@ -152,6 +153,11 @@ Note: If using `size="invisible"`, then challange run automatically when `open` 
 
 - [I'm not a robot](https://developers.google.com/recaptcha/docs/display)
 - [Invisible](https://developers.google.com/recaptcha/docs/invisible)
+
+## reCAPTCHA Enterprise docs
+
+- [Overview](https://cloud.google.com/recaptcha-enterprise/docs/)
+- [Using features](https://cloud.google.com/recaptcha-enterprise/docs/using-features)
 
 ## Contribute
 
