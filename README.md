@@ -120,10 +120,15 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 
 |Name|Value|Default|Description|
 |-|-|-|-|
+|headerComponent|`React Element`||A component to render on top of Modal.|
+|footerComponent|`React Element`||A component to render on bottom of Modal.|
+|loadingComponent|`React Element`||A custom loading component.|
+|style|[`ViewStyle`](https://reactnative.dev/docs/view-style-props)||Customize default style such as background color.|
+|modalProps|[Go to docs](https://reactnative.dev/docs/modal)||Override the Modal props.|
+|webViewProps|[Go to docs](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)||Override the WebView props.|
 |lang|`string`||[Language code](https://developers.google.com/recaptcha/docs/language).|
 |siteKey|`string`||Your sitekey.|
 |baseUrl|`string`||The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
-|headerComponent|`React Element`||A component to render on top of Modal.|
 |size|`'invisible'`, `'normal'` or `'compact'`|`'normal'`|The size of the widget.|
 |theme|`'dark'` or `'light'`|`'light'`|The color theme of the widget.|
 |onLoad|`function()`||A callback function, executed when the reCAPTCHA is ready to use.|

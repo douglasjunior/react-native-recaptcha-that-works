@@ -58,168 +58,160 @@ const styles = StyleSheet.create({
 
 const originWhitelist = ['*'];
 
-const Recaptcha = forwardRef(
-    (
-        {
-            headerComponent,
-            onVerify,
-            onExpire,
-            onError,
-            onClose,
-            onLoad,
-            theme,
-            size,
+const Recaptcha = forwardRef(({
+    headerComponent,
+    footerComponent,
+    loadingComponent,
+    webViewProps,
+    modalProps,
+    onVerify,
+    onExpire,
+    onError,
+    onClose,
+    onLoad,
+    theme,
+    size,
+    siteKey,
+    baseUrl,
+    lang,
+    style,
+}, $ref,
+) => {
+    const $isClosed = useRef(true);
+    const $webView = useRef();
+    const [visible, setVisible] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    const isInvisibleSize = size === 'invisible';
+
+    const html = useMemo(() => {
+        return getTemplate({
             siteKey,
-            baseUrl,
+            size,
+            theme,
             lang,
-            style,
-        },
-        $ref,
-    ) => {
-        const $isClosed = useRef(true);
-        const $webView = useRef();
-        const [visible, setVisible] = useState(false);
-        const [loading, setLoading] = useState(true);
+        });
+    }, [siteKey, size, theme, lang]);
 
-        const isInvisibleSize = size === 'invisible';
+    const handleLoad = useCallback((...args) => {
+        onLoad && onLoad(...args);
 
-        const html = useMemo(() => {
-            return getTemplate({
-                siteKey,
-                size,
-                theme,
-                lang,
-            });
-        }, [siteKey, size, theme, lang]);
+        if (isInvisibleSize) {
+            $webView.current.injectJavaScript(`
+                window.rnRecaptcha.execute();
+            `);
+        }
 
-        const handleLoad = useCallback(
-            (...args) => {
-                onLoad && onLoad(...args);
+        setLoading(false);
+    }, [onLoad, isInvisibleSize]);
 
+    const handleClose = useCallback((...args) => {
+        if ($isClosed.current) {
+            return;
+        }
+        $isClosed.current = true;
+        setVisible(false);
+        onClose && onClose(...args);
+    }, [onClose]);
+
+    const handleMessage = useCallback((content) => {
+        try {
+            const payload = JSON.parse(content.nativeEvent.data);
+            if (payload.close) {
                 if (isInvisibleSize) {
-                    $webView.current.injectJavaScript(`
-            window.rnRecaptcha.execute();
-          `);
+                    handleClose();
                 }
-
-                setLoading(false);
-            },
-            [onLoad, isInvisibleSize],
-        );
-
-        const handleClose = useCallback(
-            (...args) => {
-                if ($isClosed.current) {
-                    return;
-                }
-                $isClosed.current = true;
-                setVisible(false);
-                onClose && onClose(...args);
-            },
-            [onClose],
-        );
-
-        const handleMessage = useCallback(
-            (content) => {
-                try {
-                    const payload = JSON.parse(content.nativeEvent.data);
-                    if (payload.close) {
-                        if (isInvisibleSize) {
-                            handleClose();
-                        }
-                    }
-                    if (payload.load) {
-                        handleLoad(...payload.load);
-                    }
-                    if (payload.expire) {
-                        onExpire && onExpire(...payload.expire);
-                    }
-                    if (payload.error) {
-                        handleClose();
-                        onError && onError(...payload.error);
-                    }
-                    if (payload.verify) {
-                        handleClose();
-                        onVerify && onVerify(...payload.verify);
-                    }
-                } catch (err) {
-                    console.warn(err);
-                }
-            },
-            [onVerify, onExpire, onError, handleClose, handleLoad, isInvisibleSize],
-        );
-
-        const source = useMemo(
-            () => ({
-                html,
-                baseUrl,
-            }),
-            [html, baseUrl],
-        );
-
-        useImperativeHandle($ref, () => ({
-            open: () => {
-                setVisible(true);
-                setLoading(true);
-                $isClosed.current = false;
-            },
-            close: handleClose,
-        }), [handleClose]);
-
-        const handleNavigationStateChange = useCallback(() => {
-            // prevent navigation on Android
-            if (!loading) {
-                $webView.current.stopLoading();
             }
-        }, [loading]);
-
-        const handleShouldStartLoadWithRequest = useCallback(event => {
-            // prevent navigation on iOS
-            return event.navigationType === 'other';
-        }, [loading]);
-
-        const webViewStyles = useMemo(() => [styles.webView, style], [style]);
-
-        const renderLoading = () => {
-            if (!loading && source) {
-                return null;
+            if (payload.load) {
+                handleLoad(...payload.load);
             }
-            return (
-                <View style={styles.loading}>
-                    <ActivityIndicator size="large" />
-                </View>
-            );
-        };
+            if (payload.expire) {
+                onExpire && onExpire(...payload.expire);
+            }
+            if (payload.error) {
+                handleClose();
+                onError && onError(...payload.error);
+            }
+            if (payload.verify) {
+                handleClose();
+                onVerify && onVerify(...payload.verify);
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    }, [onVerify, onExpire, onError, handleClose, handleLoad, isInvisibleSize]);
 
+    const source = useMemo(() => ({
+        html,
+        baseUrl,
+    }), [html, baseUrl]);
+
+    useImperativeHandle($ref, () => ({
+        open: () => {
+            setVisible(true);
+            setLoading(true);
+            $isClosed.current = false;
+        },
+        close: handleClose,
+    }), [handleClose]);
+
+    const handleNavigationStateChange = useCallback(() => {
+        // prevent navigation on Android
+        if (!loading) {
+            $webView.current.stopLoading();
+        }
+    }, [loading]);
+
+    const handleShouldStartLoadWithRequest = useCallback(event => {
+        // prevent navigation on iOS
+        return event.navigationType === 'other';
+    }, [loading]);
+
+    const webViewStyles = useMemo(() => [
+        styles.webView,
+        style,
+    ], [style]);
+
+    const renderLoading = () => {
+        if (!loading && source) {
+            return null;
+        }
         return (
-            <Modal visible={visible} onRequestClose={handleClose} transparent>
-                {headerComponent}
-                <WebView
-                    ref={$webView}
-                    originWhitelist={originWhitelist}
-                    source={source}
-                    style={webViewStyles}
-                    onMessage={handleMessage}
-                    allowsBackForwardNavigationGestures={false}
-                    onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
-                    onNavigationStateChange={handleNavigationStateChange}
-                    bounces={false}
-                />
-                {renderLoading()}
-            </Modal>
+            <View style={styles.loading}>
+                {loadingComponent || <ActivityIndicator size="large" />}
+            </View>
         );
-    },
-);
+    };
+
+    return (
+        <Modal
+            transparent
+            {...modalProps}
+            visible={visible}
+            onRequestClose={handleClose}
+        >
+            {headerComponent}
+            <WebView
+                bounces={false}
+                allowsBackForwardNavigationGestures={false}
+                {...webViewProps}
+                source={source}
+                style={webViewStyles}
+                originWhitelist={originWhitelist}
+                onMessage={handleMessage}
+                onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
+                onNavigationStateChange={handleNavigationStateChange}
+                ref={$webView}
+            />
+            {footerComponent}
+            {renderLoading()}
+        </Modal>
+    );
+});
 
 Recaptcha.defaultProps = {
-    headerComponent: undefined,
     size: 'normal',
     theme: 'light',
-    onLoad: undefined,
-    onVerify: undefined,
-    onExpire: undefined,
-    onError: undefined,
-    onClose: undefined,
 };
 
 export default Recaptcha;

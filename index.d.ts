@@ -23,11 +23,16 @@
  */
 
 import React, { ReactNode } from "react";
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle, ModalProps } from "react-native";
+import { WebViewProps } from "react-native-webview";
 
 export declare type RecaptchaProps = {
     headerComponent?: ReactNode;
-    onVerify?: (token: string) => void;
+    footerComponent?: ReactNode;
+    loadingComponent?: ReactNode;
+    webViewProps?: WebViewProps;
+    modalProps?: ModalProps;
+    onVerify: (token: string) => void;
     onExpire?: () => void;
     onError?: (error: string) => void;
     onClose?: () => void;
