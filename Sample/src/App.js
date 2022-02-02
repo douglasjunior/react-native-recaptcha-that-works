@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, {useRef, useCallback, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   Button,
 } from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Recaptcha from 'react-native-recaptcha-that-works';
 
 const styles = StyleSheet.create({
@@ -40,9 +40,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
-      <View
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.container}>
+      <View contentInsetAdjustmentBehavior="automatic" style={styles.container}>
         <Button onPress={handleOpenPress} title="Open" />
         <Text>Token: {key}</Text>
         <Text>Size: {size}</Text>
@@ -51,7 +49,9 @@ const App = () => {
       <Recaptcha
         ref={$recaptcha}
         lang="pt"
-        headerComponent={<Button title="Close modal" onPress={handleClosePress} />}
+        headerComponent={
+          <Button title="Close modal" onPress={handleClosePress} />
+        }
         footerComponent={<Text>Footer here</Text>}
         siteKey="6LejsqwZAAAAAGsmSDWH5g09dOyNoGMcanBllKPF"
         baseUrl="http://127.0.0.1"
