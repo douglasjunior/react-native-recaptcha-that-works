@@ -124,8 +124,8 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |footerComponent|`React Element`||A component to render on bottom of Modal.|
 |loadingComponent|`React Element`||A custom loading component.|
 |style|[`ViewStyle`](https://reactnative.dev/docs/view-style-props)||Customize default style such as background color.|
-|modalProps|[Go to docs](https://reactnative.dev/docs/modal)||Override the Modal props.|
-|webViewProps|[Go to docs](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)||Override the WebView props.|
+|modalProps|[ModalProps](https://reactnative.dev/docs/modal)||Override the Modal props.|
+|webViewProps|[WebViewProps](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)||Override the WebView props.|
 |lang|`string`||[Language code](https://developers.google.com/recaptcha/docs/language).|
 |siteKey|`string`||(Required) Your sitekey.|
 |baseUrl|`string`||(Required) The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
