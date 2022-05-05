@@ -8,18 +8,19 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "postinstall": "rimraf node_modules/react-native-keyboard-manager/Sample/"
+    "postinstall": "rimraf node_modules/react-native-recaptcha-that-works/Sample/"
   },
   "dependencies": {
     "react": "16.11.0",
     "react-native": "0.62.2",
-    "react-native-webview": "10.3.2",
-    "react-native-recaptcha-that-works": "file:../"
+    "react-native-recaptcha-that-works": "file:../",
+    "react-native-webview": "10.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.10.4",
     "@babel/runtime": "7.10.4",
     "@react-native-community/eslint-config": "2.0.0",
+    "@testing-library/react-native": "9.1.0",
     "babel-jest": "26.1.0",
     "eslint": "7.3.1",
     "jest": "26.1.0",
