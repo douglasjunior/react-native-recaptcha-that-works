@@ -76,6 +76,7 @@ const Recaptcha = forwardRef(({
     lang,
     style,
     enterprise,
+    globally,
 }, $ref,
 ) => {
     const $isClosed = useRef(true);
@@ -150,6 +151,10 @@ const Recaptcha = forwardRef(({
             setVisible(true);
             setLoading(true);
             $isClosed.current = false;
+
+
+
+
         },
         close: handleClose,
     }), [handleClose]);

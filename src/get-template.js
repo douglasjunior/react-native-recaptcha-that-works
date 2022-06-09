@@ -22,14 +22,17 @@
 * SOFTWARE. 
 */
 
-const getTemplate = (params, enterprise) => {
+const getTemplate = (params, enterprise, globally) => {
     const grecaptcha = enterprise
         ? 'window.grecaptcha.enterprise'
         : 'window.grecaptcha';
 
+    const validHost = globally ? 'www.recaptcha.net' : 'www.google.com';
+    const gstaticHost = globally ? 'www.gstatic.cn' : 'www.gstatic.com';
+
     const jsScript = enterprise
-        ? '<script src="https://www.google.com/recaptcha/enterprise.js?hl={{lang}}" async defer></script>'
-        : '<script src="https://www.google.com/recaptcha/api.js?hl={{lang}}" async defer></script>'
+        ? `<script src="https://${validHost}/recaptcha/enterprise.js?hl={{lang}}" async defer></script>`
+        : `<script src="https://${validHost}/recaptcha/api.js?hl={{lang}}" async defer></script>`
 
     let template = `
     <!DOCTYPE html>
@@ -40,8 +43,8 @@ const getTemplate = (params, enterprise) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title></title>
 
-        <link rel="preconnect" href="https://www.google.com">
-        <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://${validHost}">
+        <link rel="preconnect" href="https://${gstaticHost}" crossorigin>
 
         ${jsScript}
 
