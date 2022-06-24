@@ -137,7 +137,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |onError|`function(error)`||A callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry.|
 |onClose|`function()`|| A callback function, executed when the Modal is closed.|
 |enterprise|`boolean`|`false`| (Experimental) Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
-|recaptchaDomain|`string`|`www.google.com`|The host name of the reCaptcha valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
+|recaptchaDomain|`string`|`www.google.com`|The host name of the reCAPTCHA valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
 |gstaticDomain|`string`|`www.gstatic.com`|Customize reCaptcha `gstatic` host.|
 
 Note: If `lang` is not set, then device language is used.
