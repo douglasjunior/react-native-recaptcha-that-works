@@ -76,7 +76,8 @@ const Recaptcha = forwardRef(({
     lang,
     style,
     enterprise,
-    globally,
+    recaptchaDomain,
+    gstaticDomain
 }, $ref,
 ) => {
     const $isClosed = useRef(true);
@@ -92,7 +93,7 @@ const Recaptcha = forwardRef(({
             size,
             theme,
             lang,
-        }, enterprise, globally);
+        }, enterprise, recaptchaDomain, gstaticDomain);
     }, [siteKey, size, theme, lang, enterprise]);
 
     const handleLoad = useCallback((...args) => {
@@ -151,10 +152,6 @@ const Recaptcha = forwardRef(({
             setVisible(true);
             setLoading(true);
             $isClosed.current = false;
-
-
-
-
         },
         close: handleClose,
     }), [handleClose]);
