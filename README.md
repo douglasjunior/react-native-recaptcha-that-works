@@ -138,7 +138,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |onClose|`function()`|| A callback function, executed when the Modal is closed.|
 |enterprise|`boolean`|`false`| (Experimental) Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
 |recaptchaDomain|`string`|`www.google.com`|The host name of the reCAPTCHA valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
-|gstaticDomain|`string`|`www.gstatic.com`|Customize reCaptcha `gstatic` host.|
+|gstaticDomain|`string`|`www.gstatic.com`|Customize reCAPTCHA `gstatic` host.|
 
 Note: If `lang` is not set, then device language is used.
 
