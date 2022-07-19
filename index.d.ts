@@ -30,8 +30,8 @@ export declare type RecaptchaProps = {
     headerComponent?: ReactNode;
     footerComponent?: ReactNode;
     loadingComponent?: ReactNode;
-    webViewProps?: WebViewProps;
-    modalProps?: ModalProps;
+    webViewProps?: Omit<WebViewProps, 'source' | 'style' | 'onMessage' | 'ref'>;
+    modalProps?: Omit<ModalProps, 'visible' | 'onRequestClose'>;
     onVerify: (token: string) => void;
     onExpire?: () => void;
     onError?: (error: string) => void;
@@ -46,6 +46,7 @@ export declare type RecaptchaProps = {
     enterprise?: boolean;
     recaptchaDomain?: string;
     gstaticDomain?: string;
+    hideBadge?: boolean;
 };
 
 export declare type RecaptchaHandles = {

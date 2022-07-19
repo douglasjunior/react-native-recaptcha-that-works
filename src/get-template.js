@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain) => {
+const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBadge) => {
     const grecaptcha = enterprise
         ? 'window.grecaptcha.enterprise'
         : 'window.grecaptcha';
@@ -175,6 +175,8 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain) => {
                 justify-content: center;
                 align-items: center;
             }
+
+            ${hideBadge ? '.grecaptcha-badge { visibility: hidden; }' : ''}
         </style>
     </head>
     

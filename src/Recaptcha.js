@@ -77,7 +77,8 @@ const Recaptcha = forwardRef(({
     style,
     enterprise,
     recaptchaDomain,
-    gstaticDomain
+    gstaticDomain,
+    hideBadge,
 }, $ref,
 ) => {
     const $isClosed = useRef(true);
@@ -88,13 +89,19 @@ const Recaptcha = forwardRef(({
     const isInvisibleSize = size === 'invisible';
 
     const html = useMemo(() => {
-        return getTemplate({
-            siteKey,
-            size,
-            theme,
-            lang,
-        }, enterprise, recaptchaDomain, gstaticDomain);
-    }, [siteKey, size, theme, lang, enterprise]);
+        return getTemplate(
+            {
+                siteKey,
+                size,
+                theme,
+                lang,
+            },
+            enterprise,
+            recaptchaDomain,
+            gstaticDomain,
+            hideBadge,
+        );
+    }, [siteKey, size, theme, lang, enterprise, recaptchaDomain, gstaticDomain, hideBadge]);
 
     const handleLoad = useCallback((...args) => {
         onLoad && onLoad(...args);
@@ -195,13 +202,13 @@ const Recaptcha = forwardRef(({
             <WebView
                 bounces={false}
                 allowsBackForwardNavigationGestures={false}
+                originWhitelist={originWhitelist}
+                onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
+                onNavigationStateChange={handleNavigationStateChange}
                 {...webViewProps}
                 source={source}
                 style={webViewStyles}
-                originWhitelist={originWhitelist}
                 onMessage={handleMessage}
-                onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
-                onNavigationStateChange={handleNavigationStateChange}
                 ref={$webView}
             />
             {footerComponent}
@@ -213,7 +220,6 @@ const Recaptcha = forwardRef(({
 Recaptcha.defaultProps = {
     size: 'normal',
     theme: 'light',
-    enterprise: false,
 };
 
 export default Recaptcha;

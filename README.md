@@ -80,7 +80,7 @@ import Recaptcha, { RecaptchaHandles } from "react-native-recaptcha-that-works";
 // ...
 
 export const Component: React.FC = () => {
-    const recaptcha = useRef<RecaptchaHandles>();
+    const recaptcha = useRef<RecaptchaHandles>(null);
 
     const send = () => {
         console.log('send!');
@@ -133,12 +133,13 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |theme|`'dark'` or `'light'`|`'light'`|The color theme of the widget.|
 |onLoad|`function()`||A callback function, executed when the reCAPTCHA is ready to use.|
 |onVerify|`function(token)`||(Required) A callback function, executed when the user submits a successful response. The reCAPTCHA response token is passed to your callback.|
-|onExpire|`function()`||A callback function, executed when the reCAPTCHA response expires and the user needs to re-verify.|
+|onExpire|`function()`||A callback function, executed when the reCAPTCHA response expires and the user needs to re-verify. Only works if the `webview` still open after `onVerify` has been called for a long time.|
 |onError|`function(error)`||A callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry.|
 |onClose|`function()`|| A callback function, executed when the Modal is closed.|
 |enterprise|`boolean`|`false`| (Experimental) Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
 |recaptchaDomain|`string`|`www.google.com`|The host name of the reCAPTCHA valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
 |gstaticDomain|`string`|`www.gstatic.com`|Customize reCAPTCHA `gstatic` host.|
+|hideBadge|`boolean`|`false`|You are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. [See detail](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed).|
 
 Note: If `lang` is not set, then device language is used.
 
