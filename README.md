@@ -139,7 +139,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |enterprise|`boolean`|`false`| (Experimental) Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
 |recaptchaDomain|`string`|`www.google.com`|The host name of the reCAPTCHA valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
 |gstaticDomain|`string`|`www.gstatic.com`|Customize reCAPTCHA `gstatic` host.|
-|hideBadge|`boolean`|`false`|You are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. [See detail](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed).|
+|hideBadge|`boolean`|`false`|When `size = 'invisible'`, you are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. [See detail](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed).|
 
 Note: If `lang` is not set, then device language is used.
 
