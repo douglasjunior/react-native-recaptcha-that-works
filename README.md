@@ -139,7 +139,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |onError|`function(error)`||A callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry.|
 |onClose|`function()`|| A callback function, executed when the Modal is closed.|
 |enterprise|`boolean`|`false`| (Experimental) Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
-|action|`string`|| (Experimental) [Additional parameter](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages-with-checkbox#expandable-2) for reCAPTCHA Enterprise API|
+|action|`string`|| (Experimental) An [additional parameter](https://cloud.google.com/recaptcha-enterprise/docs/actions) for specifying the action name associated with the protected element for reCAPTCHA Enterprise API.|
 |recaptchaDomain|`string`|`www.google.com`|The host name of the reCAPTCHA valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
 |gstaticDomain|`string`|`www.gstatic.com`|Customize reCAPTCHA `gstatic` host.|
 |hideBadge|`boolean`|`false`|When `size = 'invisible'`, you are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. [See detail](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed).|
