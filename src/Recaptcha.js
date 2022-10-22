@@ -79,6 +79,7 @@ const Recaptcha = forwardRef(({
     recaptchaDomain,
     gstaticDomain,
     hideBadge,
+    action,
 }, $ref,
 ) => {
     const $isClosed = useRef(true);
@@ -95,6 +96,7 @@ const Recaptcha = forwardRef(({
                 size,
                 theme,
                 lang,
+                action,
             },
             enterprise,
             recaptchaDomain,

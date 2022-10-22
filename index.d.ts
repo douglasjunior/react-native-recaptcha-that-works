@@ -47,6 +47,7 @@ export declare type RecaptchaProps = {
     recaptchaDomain?: string;
     gstaticDomain?: string;
     hideBadge?: boolean;
+    action?: string;
 };
 
 export declare type RecaptchaHandles = {

@@ -52,6 +52,7 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBad
             const siteKey = '{{siteKey}}';
             const theme = '{{theme}}';
             const size = '{{size}}';
+            const action = '{{action}}';
     
             let readyInterval;
             let onCloseInterval;
@@ -122,14 +123,18 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBad
             }
     
             const renderRecaptcha = () => {
-                widget = ${grecaptcha}.render('recaptcha-container', {
+                const recaptchaParams = {
                     sitekey: siteKey,
                     size,
                     theme,
                     callback: onVerify,
                     'expired-callback': onExpire,
                     'error-callback': onError,
-                });
+                }
+                if (action) {
+                    recaptchaParams.action = action;
+                }
+                widget = ${grecaptcha}.render('recaptcha-container', recaptchaParams);
                 if (onLoad) {
                     onLoad();
                 }
