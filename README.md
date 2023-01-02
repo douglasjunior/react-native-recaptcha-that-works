@@ -129,7 +129,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |modalProps|[ModalProps](https://reactnative.dev/docs/modal)||Override the Modal props.|
 |webViewProps|[WebViewProps](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)||Override the WebView props.|
 |lang|`string`||[Language code](https://developers.google.com/recaptcha/docs/language).|
-|siteKey|`string`||(Required) Your sitekey.|
+|siteKey|`string`||(Required) Your sitekey. (The Web key must be used, not for Android)|
 |baseUrl|`string`||(Required) The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
 |size|`'invisible'`, `'normal'` or `'compact'`|`'normal'`|The size of the widget.|
 |theme|`'dark'` or `'light'`|`'light'`|The color theme of the widget.|
