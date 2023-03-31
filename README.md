@@ -130,7 +130,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |webViewProps|[WebViewProps](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)||Override the WebView props.|
 |lang|`string`||[Language code](https://developers.google.com/recaptcha/docs/language).|
 |siteKey|`string`||(Required) Your sitekey. (The Web key must be used, not for Android)|
-|baseUrl|`string`||(Required) The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
+|baseUrl|`string`||(Required) The URL (domain) configured in the reCAPTCHA console setup. (ex. http://my.domain.com) (See also https://github.com/douglasjunior/react-native-recaptcha-that-works/issues/34)|
 |size|`'invisible'`, `'normal'` or `'compact'`|`'normal'`|The size of the widget.|
 |theme|`'dark'` or `'light'`|`'light'`|The color theme of the widget.|
 |onLoad|`function()`||A callback function, executed when the reCAPTCHA is ready to use.|
