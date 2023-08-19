@@ -1,4 +1,4 @@
-/**
+/*
  * MIT License
  *
  * Copyright (c) 2020 Douglas Nassif Roma Junior
@@ -22,41 +22,59 @@
  * SOFTWARE.
  */
 
-import React, { ReactNode } from "react";
-import { StyleProp, ViewStyle, ModalProps } from "react-native";
-import { WebViewProps } from "react-native-webview";
-
-export declare type RecaptchaProps = {
-    headerComponent?: ReactNode;
-    footerComponent?: ReactNode;
-    loadingComponent?: ReactNode;
-    webViewProps?: Omit<WebViewProps, 'source' | 'style' | 'onMessage' | 'ref'>;
-    modalProps?: Omit<ModalProps, 'visible' | 'onRequestClose'>;
-    onVerify: (token: string) => void;
-    onExpire?: () => void;
-    onError?: (error: string) => void;
-    onClose?: () => void;
-    onLoad?: () => void;
-    theme?: "dark" | "light";
-    size?: "invisible" | "normal" | "compact";
-    siteKey: string;
-    baseUrl: string;
-    lang?: string;
-    style?: StyleProp<ViewStyle>;
-    enterprise?: boolean;
-    recaptchaDomain?: string;
-    gstaticDomain?: string;
-    hideBadge?: boolean;
-    action?: string;
+type PayloadClose = {
+  close: [];
 };
 
-export declare type RecaptchaHandles = {
-    open(): void;
-    close(): void;
+type PayloadError = {
+  error: [any];
 };
 
-declare const Recaptcha: React.ForwardRefExoticComponent<
-    RecaptchaProps & React.RefAttributes<RecaptchaHandles>
->;
+type PayloadLoad = {
+  load: [];
+};
 
-export default Recaptcha;
+type PayloadExpire = {
+  expire: [];
+};
+
+type PayloadVerify = {
+  verify: [string];
+};
+
+export type MessageReceivedPayload =
+  | PayloadClose
+  | PayloadError
+  | PayloadLoad
+  | PayloadExpire
+  | PayloadVerify;
+
+export const isPayloadClose = (
+  payload: MessageReceivedPayload,
+): payload is PayloadClose => {
+  return 'close' in payload;
+};
+
+export const isPayloadError = (
+  payload: MessageReceivedPayload,
+): payload is PayloadError => {
+  return 'error' in payload;
+};
+
+export const isPayloadLoad = (
+  payload: MessageReceivedPayload,
+): payload is PayloadLoad => {
+  return 'load' in payload;
+};
+
+export const isPayloadExpire = (
+  payload: MessageReceivedPayload,
+): payload is PayloadExpire => {
+  return 'expire' in payload;
+};
+
+export const isPayloadVerify = (
+  payload: MessageReceivedPayload,
+): payload is PayloadVerify => {
+  return 'verify' in payload;
+};

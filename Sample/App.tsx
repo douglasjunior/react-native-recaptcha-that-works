@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Recaptcha, { RecaptchaHandles } from 'react-native-recaptcha-that-works';
+import Recaptcha, { RecaptchaRef } from 'react-native-recaptcha-that-works';
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -28,7 +28,7 @@ const App = () => {
   const size = 'invisible';
   const [token, setToken] = useState('<none>');
 
-  const $recaptcha = useRef<RecaptchaHandles>(null);
+  const $recaptcha = useRef<RecaptchaRef | null>(null);
 
   const handleOpenPress = useCallback(() => {
     $recaptcha.current?.open();

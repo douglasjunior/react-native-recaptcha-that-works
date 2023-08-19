@@ -1,40 +1,55 @@
-/**
-* MIT License
-*
-* Copyright (c) 2020 Douglas Nassif Roma Junior
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
+/*
+ * MIT License
+ *
+ * Copyright (c) 2020 Douglas Nassif Roma Junior
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
-const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBadge) => {
-    const grecaptcha = enterprise
-        ? 'window.grecaptcha.enterprise'
-        : 'window.grecaptcha';
+export type RecaptchaSize = 'invisible' | 'normal' | 'compact';
 
-    const validHost = recaptchaDomain || 'www.google.com';
-    const gstaticHost = gstaticDomain || 'www.gstatic.com';
+export type RecaptchaTheme = 'dark' | 'light';
 
-    const jsScript = enterprise
-        ? `<script src="https://${validHost}/recaptcha/enterprise.js?hl={{lang}}" async defer></script>`
-        : `<script src="https://${validHost}/recaptcha/api.js?hl={{lang}}" async defer></script>`
+export type TemplateParams = {
+  siteKey: string;
+  size?: RecaptchaSize;
+  theme?: RecaptchaTheme;
+  lang?: string;
+  action?: string;
+};
 
-    let template = `
+const getTemplate = (
+  params: TemplateParams,
+  recaptchaDomain: string,
+  gstaticDomain: string,
+  enterprise: boolean,
+  hideBadge: boolean,
+) => {
+  const grecaptchaObject = enterprise
+    ? 'window.grecaptcha.enterprise'
+    : 'window.grecaptcha';
+
+  const jsScript = enterprise
+    ? `<script src="https://${recaptchaDomain}/recaptcha/enterprise.js?hl={{lang}}" async defer></script>`
+    : `<script src="https://${recaptchaDomain}/recaptcha/api.js?hl={{lang}}" async defer></script>`;
+
+  let template = `
     <!DOCTYPE html>
     <html lang="{{lang}}">
     
@@ -43,8 +58,8 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBad
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title></title>
 
-        <link rel="preconnect" href="https://${validHost}">
-        <link rel="preconnect" href="https://${gstaticHost}" crossorigin>
+        <link rel="preconnect" href="https://${recaptchaDomain}">
+        <link rel="preconnect" href="https://${gstaticDomain}" crossorigin>
 
         ${jsScript}
 
@@ -89,7 +104,7 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBad
                 }));
             }
     
-            const isReady = () => Boolean(typeof window === 'object' && window.grecaptcha && ${grecaptcha}.render);
+            const isReady = () => Boolean(typeof window === 'object' && window.grecaptcha && ${grecaptchaObject}.render);
     
             const registerOnCloseListener = () => {
                 if (onCloseObserver) {
@@ -134,7 +149,7 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBad
                 if (action) {
                     recaptchaParams.action = action;
                 }
-                widget = ${grecaptcha}.render('recaptcha-container', recaptchaParams);
+                widget = ${grecaptchaObject}.render('recaptcha-container', recaptchaParams);
                 if (onLoad) {
                     onLoad();
                 }
@@ -156,10 +171,10 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBad
     
             window.rnRecaptcha = {
                 execute: () => {
-                    ${grecaptcha}.execute(widget);
+                    ${grecaptchaObject}.execute(widget);
                 },
                 reset: () => {
-                    ${grecaptcha}.reset(widget);
+                    ${grecaptchaObject}.reset(widget);
                 },
             }
         </script>
@@ -193,12 +208,11 @@ const getTemplate = (params, enterprise, recaptchaDomain, gstaticDomain, hideBad
     
     </html>`;
 
-    Object.entries(params)
-        .forEach(([key, value]) => {
-            template = template.replace(new RegExp(`{{${key}}}`, 'img'), value);
-        });
+  Object.entries(params).forEach(([key, value]) => {
+    template = template.replace(new RegExp(`{{${key}}}`, 'img'), value);
+  });
 
-    return template;
+  return template;
 };
 
 export default getTemplate;

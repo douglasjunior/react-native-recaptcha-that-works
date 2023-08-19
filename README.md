@@ -129,8 +129,8 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |modalProps|[ModalProps](https://reactnative.dev/docs/modal)||Override the Modal props.|
 |webViewProps|[WebViewProps](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)||Override the WebView props.|
 |lang|`string`||[Language code](https://developers.google.com/recaptcha/docs/language).|
-|siteKey|`string`||(Required) Your sitekey.|
-|baseUrl|`string`||(Required) The URL (domain) configured in the reCAPTCHA setup. (ex. http://my.domain.com)|
+|siteKey|`string`||(Required) Your web reCAPTCHA site key.|
+|baseUrl|`string`||(Required) The URL (domain) configured in the reCAPTCHA site key setup. (ex. http://my.domain.com)|
 |size|`'invisible'`, `'normal'` or `'compact'`|`'normal'`|The size of the widget.|
 |theme|`'dark'` or `'light'`|`'light'`|The color theme of the widget.|
 |onLoad|`function()`||A callback function, executed when the reCAPTCHA is ready to use.|
@@ -141,7 +141,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |recaptchaDomain|`string`|`www.google.com`|The host name of the reCAPTCHA valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
 |gstaticDomain|`string`|`www.gstatic.com`|Customize reCAPTCHA `gstatic` host.|
 |hideBadge|`boolean`|`false`|When `size = 'invisible'`, you are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. [See detail](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed).|
-|enterprise|`boolean` (enterprise)|`false`| Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
+|enterprise|`boolean` (enterprise)|`false`|Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
 |action|`string` (enterprise)|| An [additional parameter](https://cloud.google.com/recaptcha-enterprise/docs/actions) for specifying the action name associated with the protected element for reCAPTCHA Enterprise API.|
 
 Note: If `lang` is not set, then device language is used.
