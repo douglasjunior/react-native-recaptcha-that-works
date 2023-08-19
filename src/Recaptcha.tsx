@@ -114,11 +114,11 @@ export type RecaptchaProps = {
    */
   lang?: string;
   /**
-   * Your web reCAPTCHA site key.
+   * Your Web reCAPTCHA site key. (The Web key must be used, not for Android)
    */
   siteKey: string;
   /**
-   * The URL (domain) configured in the reCAPTCHA site key setup. (ex. http://my.domain.com)
+   * The URL (domain) configured in the reCAPTCHA console setup. (ex. http://my.domain.com)
    */
   baseUrl: string;
   /**
