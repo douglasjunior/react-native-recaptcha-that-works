@@ -77,12 +77,12 @@ const App = () => {
 import React, { useRef } from 'react';
 import { View, Button } from 'react-native';
 
-import Recaptcha, { RecaptchaHandles } from "react-native-recaptcha-that-works";
+import Recaptcha, { RecaptchaRef } from "react-native-recaptcha-that-works";
 
 // ...
 
 export const Component: React.FC = () => {
-    const recaptcha = useRef<RecaptchaHandles>(null);
+    const recaptcha = useRef<RecaptchaRef>(null);
 
     const send = () => {
         console.log('send!');
