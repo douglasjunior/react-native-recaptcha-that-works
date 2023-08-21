@@ -82,7 +82,7 @@ import Recaptcha, { RecaptchaRef } from "react-native-recaptcha-that-works";
 // ...
 
 export const Component: React.FC = () => {
-    const recaptcha = useRef<RecaptchaRef>(null);
+    const recaptcha = useRef<RecaptchaRef | null>(null);
 
     const send = () => {
         console.log('send!');
