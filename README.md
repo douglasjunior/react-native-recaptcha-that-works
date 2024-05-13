@@ -141,7 +141,7 @@ For more details, see the [Sample Project](https://github.com/douglasjunior/reac
 |recaptchaDomain|`string`|`www.google.com`|The host name of the reCAPTCHA valid api. [See detail](https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally).|
 |gstaticDomain|`string`|`www.gstatic.com`|Customize reCAPTCHA `gstatic` host.|
 |hideBadge|`boolean`|`false`|When `size = 'invisible'`, you are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. [See detail](https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed).|
-|enterprise|`boolean` (enterprise)|`false`|Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features).|
+|enterprise|`boolean` (enterprise)|`false`|Use the new [reCAPTCHA Enterprise API](https://cloud.google.com/recaptcha-enterprise/docs/using-features). Note: for enterprise you need to choose the `size` when creating the `siteKey` https://github.com/douglasjunior/react-native-recaptcha-that-works/issues/55 .|
 |action|`string` (enterprise)|| An [additional parameter](https://cloud.google.com/recaptcha-enterprise/docs/actions) for specifying the action name associated with the protected element for reCAPTCHA Enterprise API.|
 
 Note: If `lang` is not set, then device language is used.
