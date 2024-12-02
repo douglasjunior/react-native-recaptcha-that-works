@@ -183,6 +183,13 @@ And the `baseUrl` prop must be a valid domain set in the **Domains** section.
 
 ![Screenshot 2024-12-02 at 08 27 13](https://github.com/user-attachments/assets/c4dbca2b-0a4d-43af-996d-3956f9b7901a)
 
+> ```jsx
+> <Recaptcha 
+>    siteKey="abc123"
+>    baseUrl="http://mysite.com"
+> />
+> ```
+
 ## Contribute
 
 New features, bug fixes and improvements are welcome! For questions and suggestions, use the [issues](https://github.com/douglasjunior/react-native-recaptcha-that-works/issues).
