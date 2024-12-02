@@ -165,6 +165,24 @@ Note: If using `size="invisible"`, then challenge run automatically when `open` 
 - [Overview](https://cloud.google.com/recaptcha-enterprise/docs/)
 - [Using features](https://cloud.google.com/recaptcha-enterprise/docs/using-features)
 
+## Troubleshooting
+
+### WebView not loading on iOS
+
+This is a bug in `react-native-webview` (more details https://github.com/douglasjunior/react-native-recaptcha-that-works/issues/65). PR opened in https://github.com/react-native-webview/react-native-webview/pull/3631.
+
+### reCAPTCAH `siteKey` or `baseUrl` invalid
+
+This package utilizes the web version of **reCAPTCHA v2**, so in the `siteKey` prop you need to use the **site public key** from the reCAPTCHA console.
+
+<img src="https://github.com/user-attachments/assets/e121de96-d956-426b-9fc5-28fbe58903b0" height="300" />
+
+> Create new reCAPTCHA v2 here https://www.google.com/recaptcha/admin/create
+
+And the `baseUrl` prop must be a valid domain set in the **Domains** section.
+
+![Screenshot 2024-12-02 at 08 27 13](https://github.com/user-attachments/assets/c4dbca2b-0a4d-43af-996d-3956f9b7901a)
+
 ## Contribute
 
 New features, bug fixes and improvements are welcome! For questions and suggestions, use the [issues](https://github.com/douglasjunior/react-native-recaptcha-that-works/issues).
