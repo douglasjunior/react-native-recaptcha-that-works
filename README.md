@@ -169,7 +169,7 @@ Note: If using `size="invisible"`, then challenge run automatically when `open` 
 
 ### WebView not loading on iOS
 
-This is a bug in `react-native-webview` (more details https://github.com/douglasjunior/react-native-recaptcha-that-works/issues/65). PR opened in https://github.com/react-native-webview/react-native-webview/pull/3631.
+This is a bug in `react-native-webview` (more details https://github.com/douglasjunior/react-native-recaptcha-that-works/issues/65). PR opened in https://github.com/react-native-webview/react-native-webview/pull/3615.
 
 ### reCAPTCAH `siteKey` or `baseUrl` invalid
 
