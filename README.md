@@ -4,6 +4,20 @@
 [![npm version](https://img.shields.io/npm/v/react-native-recaptcha-that-works.svg)](https://www.npmjs.com/package/react-native-recaptcha-that-works)
 [![npm downloads](https://img.shields.io/npm/dt/react-native-recaptcha-that-works.svg)](#install)
 
+---
+
+## 🚨 Important Notice 🚨
+
+Users have recently observed a significant increase in "high risk requests" when using reCAPTCHA solution with WebView. Upon further investigation, we found that the official documentation advises against using WebView-based implementations for reCAPTCHA on iOS and Android.
+
+Now, Google recommends using their [first-party solution for React Native](https://github.com/GoogleCloudPlatform/recaptcha-enterprise-react-native/), which is intended for enterprise use.
+
+⚠️ We encourage you to try both the WebView-based solution and the first-party native library to determine which one best fits your needs.
+
+You can find more details and the discussion [here](https://github.com/douglasjunior/react-native-recaptcha-that-works/issues/67#issuecomment-2604329675).
+
+---
+
 A reCAPTCHA library for React Native (Android and iOS) that works.
 
 _Looking for [React DOM version](https://github.com/douglasjunior/react-recaptcha-that-works)?_
