@@ -28,8 +28,8 @@
   <a href="#-previews">Previews</a> ·
   <a href="#-installation">Installation</a> ·
   <a href="#-usage">Usage</a> ·
-  <a href="#-props">Props</a> ·
-  <a href="#-methods">Methods</a> ·
+  <a href="#props">Props</a> ·
+  <a href="#methods">Methods</a> ·
   <a href="#-official-documentation">Docs</a> ·
   <a href="#-troubleshooting">Troubleshooting</a> ·
   <a href="#-contributing">Contributing</a>
@@ -249,7 +249,10 @@ For a complete working implementation, see the [Sample Project](https://github.c
 
 ---
 
-## 🎛️ Props
+## Props
+
+<span id="props"></span>
+<span id="-props"></span>
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
@@ -277,7 +280,10 @@ For a complete working implementation, see the [Sample Project](https://github.c
 
 ---
 
-## 🛠️ Methods
+## Methods
+
+<span id="methods"></span>
+<span id="-methods"></span>
 
 Imperative methods exposed via the `ref` handle (`RecaptchaRef`):
 
@@ -348,8 +354,7 @@ Contributions, issues, and feature requests are welcome!
 
 1. Fork the repository and create your topic branch (`git checkout -b feature/my-feature`).
 2. Verify code quality and types with `npm run build`.
-3. Follow [Conventional Commits](https://www.conventionalcommits.org/) for all commit messages.
-4. Submit a pull request describing your improvements.
+3. Submit a pull request describing your improvements.
 
 For bug reports or questions, feel free to open an [issue](https://github.com/douglasjunior/react-native-recaptcha-that-works/issues).
 

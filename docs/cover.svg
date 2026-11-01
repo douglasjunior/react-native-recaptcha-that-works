@@ -61,6 +61,11 @@
 
     <style>
       <![CDATA[
+      .anim-token-pill, .anim-float-subtle {
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
       @media (prefers-reduced-motion: no-preference) {
         .anim-star-twinkle {
           animation: starTwinkle 4s ease-in-out infinite;
@@ -91,8 +96,8 @@
       }
 
       @keyframes starTwinkle {
-        0%, 100% { opacity: 0.35; transform: scale(0.95); }
-        50% { opacity: 0.95; transform: scale(1.15); }
+        0%, 100% { opacity: 0.35; }
+        50% { opacity: 0.95; }
       }
 
       @keyframes rcBoxStroke {
@@ -245,14 +250,14 @@
       <rect width="100" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
       <text x="50" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">MIT License</text>
 
-      <rect x="110" width="124" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
-      <text x="172" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">TypeScript Ready</text>
+      <rect x="110" width="134" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="177" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">TypeScript Ready</text>
 
-      <rect x="244" width="124" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
-      <text x="306" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">Expo Compatible</text>
+      <rect x="254" width="128" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="318" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">Expo Compatible</text>
 
-      <rect x="378" width="176" height="26" rx="6" fill="rgba(63, 208, 255, 0.1)" stroke="rgba(63, 208, 255, 0.3)"/>
-      <text x="466" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#3fd0ff" text-anchor="middle">Android &amp; iOS Support</text>
+      <rect x="392" width="176" height="26" rx="6" fill="rgba(63, 208, 255, 0.1)" stroke="rgba(63, 208, 255, 0.3)"/>
+      <text x="480" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#3fd0ff" text-anchor="middle">Android &amp; iOS Support</text>
     </g>
   </g>
 
@@ -266,7 +271,7 @@
     <rect x="12" y="12" width="366" height="526" rx="44" fill="#0d0f27" stroke="url(#phone-border)" stroke-width="2.5"/>
 
     <!-- Screen Inner Area (Clipped) -->
-    <g clip-path="url(#screen-clip)">
+    <g transform="translate(-730, -48)" clip-path="url(#screen-clip)">
       <!-- App Screen Background -->
       <rect x="752" y="66" width="346" height="508" fill="#090c1f"/>
 
@@ -333,21 +338,25 @@
       </g>
 
       <!-- Token Verified Callback Pill -->
-      <g class="anim-token-pill" transform="translate(768, 432)">
-        <rect width="314" height="46" rx="10" fill="url(#token-bg)" stroke="#3fd0ff" stroke-width="1.2"/>
-        <!-- Success Badge -->
-        <circle cx="24" cy="23" r="10" fill="#10b981"/>
-        <text x="24" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">✓</text>
-        <text x="44" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">onVerify(token)</text>
-        <text x="44" y="34" font-family="ui-monospace, monospace" font-size="9.5" fill="#3fd0ff">03AFcWeA7q9K_L8m2P1v... (200 OK)</text>
+      <g transform="translate(768, 432)">
+        <g class="anim-token-pill">
+          <rect width="314" height="46" rx="10" fill="url(#token-bg)" stroke="#3fd0ff" stroke-width="1.2"/>
+          <!-- Success Badge -->
+          <circle cx="24" cy="23" r="10" fill="#10b981"/>
+          <text x="24" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">✓</text>
+          <text x="44" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">onVerify(token)</text>
+          <text x="44" y="34" font-family="ui-monospace, monospace" font-size="9.5" fill="#3fd0ff">03AFcWeA7q9K_L8m2P1v... (200 OK)</text>
+        </g>
       </g>
     </g>
 
     <!-- Floating Expo Pill on Side of Mockup -->
-    <g class="anim-float-subtle" transform="translate(230, 480)">
-      <rect width="130" height="28" rx="14" fill="#0d0f27" stroke="url(#badge-glow-grad)" stroke-width="1.5" filter="url(#glow-cyan)"/>
-      <circle cx="16" cy="14" r="4" fill="#ffd56a"/>
-      <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#e9ebfa" letter-spacing="0.5">EXPO READY</text>
+    <g transform="translate(230, 480)">
+      <g class="anim-float-subtle">
+        <rect width="130" height="28" rx="14" fill="#0d0f27" stroke="url(#badge-glow-grad)" stroke-width="1.5" filter="url(#glow-cyan)"/>
+        <circle cx="16" cy="14" r="4" fill="#ffd56a"/>
+        <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#e9ebfa" letter-spacing="0.5">EXPO READY</text>
+      </g>
     </g>
   </g>
 </svg>
