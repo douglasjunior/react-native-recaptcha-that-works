@@ -1,0 +1,365 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <!-- Background Cosmic Gradients -->
+    <radialGradient id="nebula-violet" cx="18%" cy="18%" r="65%">
+      <stop offset="0%" stop-color="#5842d6" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#04050d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula-cyan" cx="84%" cy="24%" r="60%">
+      <stop offset="0%" stop-color="#1882be" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#04050d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula-pink" cx="45%" cy="94%" r="55%">
+      <stop offset="0%" stop-color="#be3c78" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#04050d" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Linear Gradients -->
+    <linearGradient id="cosmic-stripe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b7bff"/>
+      <stop offset="35%" stop-color="#3fd0ff"/>
+      <stop offset="70%" stop-color="#ff6a8e"/>
+      <stop offset="100%" stop-color="#ffd56a"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#e9ebfa"/>
+      <stop offset="100%" stop-color="#3fd0ff"/>
+    </linearGradient>
+    <linearGradient id="phone-border" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3fd0ff" stop-opacity="0.65"/>
+      <stop offset="50%" stop-color="#8b7bff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ff6a8e" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="token-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(24, 130, 190, 0.28)"/>
+      <stop offset="100%" stop-color="rgba(88, 66, 214, 0.35)"/>
+    </linearGradient>
+    <linearGradient id="badge-glow-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b7bff"/>
+      <stop offset="100%" stop-color="#3fd0ff"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glow-violet" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glow-green" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Screen Clipping -->
+    <clipPath id="screen-clip">
+      <rect x="752" y="66" width="346" height="508" rx="30"/>
+    </clipPath>
+
+    <style>
+      <![CDATA[
+      .anim-token-pill, .anim-float-subtle {
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      .anim-rc-spin {
+        opacity: 0;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .anim-star-twinkle {
+          animation: starTwinkle 4s ease-in-out infinite;
+        }
+        .anim-rc-box {
+          animation: rcBoxStroke 6.5s ease-in-out infinite;
+        }
+        .anim-rc-spin {
+          animation: rcSpinFade 6.5s ease-in-out infinite, rcSpin 0.9s linear infinite;
+          transform-box: fill-box;
+          transform-origin: center;
+        }
+        .anim-rc-check {
+          animation: rcCheckAnim 6.5s ease-in-out infinite;
+        }
+        .anim-token-pill {
+          animation: tokenSlideIn 6.5s ease-in-out infinite;
+        }
+        .anim-modal-pulse {
+          animation: modalPulse 6.5s ease-in-out infinite;
+        }
+        .anim-float-subtle {
+          animation: badgeFloat 5s ease-in-out infinite;
+        }
+        .anim-pulse-subtle {
+          animation: pulseSubtle 3s ease-in-out infinite;
+        }
+      }
+
+      @keyframes starTwinkle {
+        0%, 100% { opacity: 0.35; }
+        50% { opacity: 0.95; }
+      }
+
+      @keyframes rcBoxStroke {
+        0%, 20% { stroke: #b8bcd6; fill: #ffffff; }
+        28%, 82% { stroke: #10b981; fill: rgba(16, 185, 129, 0.08); }
+        90%, 100% { stroke: #b8bcd6; fill: #ffffff; }
+      }
+
+      @keyframes rcSpinFade {
+        0%, 4% { opacity: 0; }
+        7%, 24% { opacity: 1; }
+        28%, 100% { opacity: 0; }
+      }
+
+      @keyframes rcSpin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes rcCheckAnim {
+        0%, 25% { stroke-dashoffset: 28; opacity: 0; }
+        31%, 82% { stroke-dashoffset: 0; opacity: 1; }
+        90%, 100% { stroke-dashoffset: 28; opacity: 0; }
+      }
+
+      @keyframes tokenSlideIn {
+        0%, 28% { opacity: 0; transform: translateY(14px) scale(0.96); }
+        35%, 83% { opacity: 1; transform: translateY(0) scale(1); }
+        90%, 100% { opacity: 0; transform: translateY(-8px) scale(0.96); }
+      }
+
+      @keyframes modalPulse {
+        0%, 25% { stroke: rgba(139, 123, 255, 0.35); }
+        33%, 82% { stroke: rgba(63, 208, 255, 0.75); }
+        90%, 100% { stroke: rgba(139, 123, 255, 0.35); }
+      }
+
+      @keyframes badgeFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+
+      @keyframes pulseSubtle {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+      ]]>
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1280" height="640" rx="20" fill="#04050d"/>
+  <rect width="1280" height="640" rx="20" fill="url(#nebula-violet)"/>
+  <rect width="1280" height="640" rx="20" fill="url(#nebula-cyan)"/>
+  <rect width="1280" height="640" rx="20" fill="url(#nebula-pink)"/>
+
+  <!-- Subtle Blueprint Grid -->
+  <g opacity="0.10">
+    <line x1="80" y1="0" x2="80" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="360" y1="0" x2="360" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="520" y1="0" x2="520" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="680" y1="0" x2="680" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="840" y1="0" x2="840" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="1160" y1="0" x2="1160" y2="640" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="80" x2="1280" y2="80" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="200" x2="1280" y2="200" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="320" x2="1280" y2="320" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="440" x2="1280" y2="440" stroke="#8b7bff" stroke-width="1"/>
+    <line x1="0" y1="560" x2="1280" y2="560" stroke="#8b7bff" stroke-width="1"/>
+  </g>
+
+  <!-- Stars -->
+  <g class="anim-star-twinkle" fill="#ffd56a">
+    <circle cx="150" cy="85" r="1.5" opacity="0.6"/>
+    <circle cx="270" cy="470" r="1.2" opacity="0.4"/>
+    <circle cx="610" cy="115" r="1.8" opacity="0.7"/>
+    <circle cx="700" cy="530" r="1.4" opacity="0.5"/>
+    <circle cx="1190" cy="130" r="2.0" opacity="0.8"/>
+    <circle cx="1140" cy="570" r="1.3" opacity="0.4"/>
+  </g>
+  <g fill="#3fd0ff">
+    <circle cx="120" cy="330" r="1.2" opacity="0.5"/>
+    <circle cx="570" cy="380" r="1.6" opacity="0.6"/>
+    <circle cx="730" cy="75" r="1.2" opacity="0.4"/>
+    <circle cx="1230" cy="410" r="1.5" opacity="0.7"/>
+  </g>
+
+  <!-- Outer Frame & Cosmic Stripe -->
+  <rect x="1" y="1" width="1278" height="638" rx="19" fill="none" stroke="rgba(150, 160, 255, 0.16)" stroke-width="2"/>
+  <rect x="0" y="635" width="1280" height="5" fill="url(#cosmic-stripe)"/>
+
+  <!-- ==================== LEFT COLUMN: CONTENT ==================== -->
+  <g transform="translate(80, 0)">
+    <!-- Pill Category -->
+    <g transform="translate(0, 88)">
+      <rect width="316" height="32" rx="16" fill="rgba(139, 123, 255, 0.12)" stroke="#8b7bff" stroke-width="1.2"/>
+      <circle cx="18" cy="16" r="4" fill="#3fd0ff"/>
+      <text x="32" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e9ebfa" letter-spacing="1">REACT NATIVE · GOOGLE RECAPTCHA</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.5">
+      react-native-
+    </text>
+    <text x="0" y="234" font-family="system-ui, -apple-system, sans-serif" font-size="46" font-weight="800" fill="url(#title-grad)" letter-spacing="-0.5">
+      recaptcha-that-works
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#9ba1c7" font-weight="400">
+      A dependable Google reCAPTCHA bridge for React Native that works.
+    </text>
+    <text x="0" y="304" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#838ab2" font-weight="400">
+      Supports reCAPTCHA v2 (checkbox &amp; invisible) and Enterprise with <tspan fill="#3fd0ff" font-weight="600">Expo</tspan>.
+    </text>
+
+    <!-- Feature Cards -->
+    <g transform="translate(0, 340)">
+      <!-- Card 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="560" height="52" rx="12" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(150, 160, 255, 0.14)" stroke-width="1"/>
+        <circle cx="26" cy="26" r="10" fill="rgba(88, 224, 138, 0.15)"/>
+        <text x="26" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#58e08a" text-anchor="middle">✓</text>
+        <text x="50" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#e9ebfa">Normal &amp; Invisible reCAPTCHA v2</text>
+        <text x="50" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#9ba1c7">Interactive checkbox, compact mode, and automatic background challenge flows</text>
+      </g>
+
+      <!-- Card 2 -->
+      <g transform="translate(0, 64)">
+        <rect width="560" height="52" rx="12" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(150, 160, 255, 0.14)" stroke-width="1"/>
+        <circle cx="26" cy="26" r="10" fill="rgba(63, 208, 255, 0.15)"/>
+        <text x="26" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#3fd0ff" text-anchor="middle">⚡</text>
+        <text x="50" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#e9ebfa">Enterprise API &amp; Action Tagging</text>
+        <text x="50" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#9ba1c7">Seamless support for reCAPTCHA Enterprise endpoints and custom action names</text>
+      </g>
+
+      <!-- Card 3 -->
+      <g transform="translate(0, 128)">
+        <rect width="560" height="52" rx="12" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(150, 160, 255, 0.14)" stroke-width="1"/>
+        <circle cx="26" cy="26" r="10" fill="rgba(139, 123, 255, 0.15)"/>
+        <text x="26" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#8b7bff" text-anchor="middle">⚛</text>
+        <text x="50" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#e9ebfa">Expo &amp; Bare Workflow Compatibility</text>
+        <text x="50" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#9ba1c7">No native code of its own; powered by react-native-webview modal bridge</text>
+      </g>
+    </g>
+
+    <!-- Bottom Metadata Chips -->
+    <g transform="translate(0, 545)">
+      <rect width="100" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="50" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">MIT License</text>
+
+      <rect x="110" width="134" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="177" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">TypeScript Ready</text>
+
+      <rect x="254" width="128" height="26" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.12)"/>
+      <text x="318" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#9ba1c7" text-anchor="middle">Expo Compatible</text>
+
+      <rect x="392" width="176" height="26" rx="6" fill="rgba(63, 208, 255, 0.1)" stroke="rgba(63, 208, 255, 0.3)"/>
+      <text x="480" y="17" font-family="ui-monospace, monospace" font-size="11.5" fill="#3fd0ff" text-anchor="middle">Android &amp; iOS Support</text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT COLUMN: ANIMATED RECAPTCHA MOCKUP ==================== -->
+  <g transform="translate(730, 48)">
+    <!-- Device Ambient Glow -->
+    <rect x="12" y="12" width="366" height="526" rx="46" fill="none" stroke="rgba(63, 208, 255, 0.28)" stroke-width="16" opacity="0.3" filter="url(#glow-cyan)"/>
+    <rect x="12" y="12" width="366" height="526" rx="46" fill="none" stroke="rgba(139, 123, 255, 0.36)" stroke-width="20" opacity="0.3" filter="url(#glow-violet)"/>
+
+    <!-- Phone Chassis -->
+    <rect x="12" y="12" width="366" height="526" rx="44" fill="#0d0f27" stroke="url(#phone-border)" stroke-width="2.5"/>
+
+    <!-- Screen Inner Area (Clipped) -->
+    <g transform="translate(-730, -48)" clip-path="url(#screen-clip)">
+      <!-- App Screen Background -->
+      <rect x="752" y="66" width="346" height="508" fill="#090c1f"/>
+
+      <!-- Status Bar -->
+      <g opacity="0.8">
+        <text x="780" y="94" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e9ebfa">9:41</text>
+        <circle cx="1040" cy="90" r="2.5" fill="#e9ebfa"/>
+        <path d="M1050 86 a6 6 0 0 1 12 0" fill="none" stroke="#e9ebfa" stroke-width="1.8"/>
+        <rect x="1068" y="85" width="16" height="9" rx="2.5" fill="none" stroke="#e9ebfa" stroke-width="1.2"/>
+        <rect x="1070" y="87" width="10" height="5" rx="1.5" fill="#e9ebfa"/>
+      </g>
+
+      <!-- App Header -->
+      <g transform="translate(0, 0)">
+        <path d="M778 126 l-6 6 l6 6" fill="none" stroke="#3fd0ff" stroke-width="2" stroke-linecap="round"/>
+        <text x="792" y="136" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#ffffff">Verify Human Action</text>
+      </g>
+
+      <!-- Stylized Form Preview -->
+      <g opacity="0.6">
+        <text x="774" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#9ba1c7">Email Address</text>
+        <rect x="774" y="182" width="302" height="38" rx="8" fill="rgba(19, 23, 54, 0.8)" stroke="rgba(150, 160, 255, 0.16)"/>
+        <text x="788" y="206" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#838ab2">alex@example.com</text>
+
+        <rect x="774" y="234" width="302" height="38" rx="19" fill="#1e2246" stroke="rgba(139, 123, 255, 0.3)"/>
+        <text x="925" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#e9ebfa" text-anchor="middle">Verify &amp; Continue</text>
+      </g>
+
+      <!-- Modal Scrim Overlay (reCAPTCHA Dialog Backdrop) -->
+      <rect x="752" y="66" width="346" height="508" fill="rgba(4, 5, 13, 0.72)"/>
+
+      <!-- reCAPTCHA Modal Container -->
+      <rect class="anim-modal-pulse" x="768" y="260" width="314" height="154" rx="14" fill="#0e122b" stroke="rgba(139, 123, 255, 0.45)" stroke-width="1.5"/>
+
+      <!-- Modal Header Bar -->
+      <text x="784" y="284" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#3fd0ff" letter-spacing="0.5">SECURITY CHALLENGE</text>
+      <text x="1066" y="284" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#838ab2" text-anchor="end" opacity="0.7">×</text>
+      <line x1="768" y1="294" x2="1082" y2="294" stroke="rgba(150, 160, 255, 0.12)" stroke-width="1"/>
+
+      <!-- The reCAPTCHA Widget Card -->
+      <g transform="translate(782, 308)">
+        <!-- Card Background -->
+        <rect width="286" height="78" rx="6" fill="#f9fafe" stroke="#d5d9ec" stroke-width="1.2"/>
+
+        <!-- Checkbox Area -->
+        <rect class="anim-rc-box" x="18" y="22" width="34" height="34" rx="4" fill="#ffffff" stroke="#b8bcd6" stroke-width="2.2"/>
+
+        <!-- Spinner Circle -->
+        <circle class="anim-rc-spin" cx="35" cy="39" r="10" fill="none" stroke="#1a73e8" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="16 34"/>
+
+        <!-- Green Checkmark -->
+        <path class="anim-rc-check" d="M26 39 l6 6 l13 -13" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="28" stroke-dashoffset="28"/>
+
+        <!-- "I'm not a robot" Label -->
+        <text x="64" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#20233f">I'm not a robot</text>
+
+        <!-- reCAPTCHA Logo & Links -->
+        <g transform="translate(242, 39)">
+          <!-- Blue Looping Arrows Emblem -->
+          <circle cx="0" cy="-6" r="10.5" fill="none" stroke="#4285f4" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="20 10"/>
+          <text x="0" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#7a7f9e" text-anchor="middle">reCAPTCHA</text>
+          <text x="0" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="5.5" fill="#9ba1c7" text-anchor="middle">Privacy - Terms</text>
+        </g>
+      </g>
+
+      <!-- Token Verified Callback Pill -->
+      <g transform="translate(768, 432)">
+        <g class="anim-token-pill">
+          <rect width="314" height="46" rx="10" fill="url(#token-bg)" stroke="#3fd0ff" stroke-width="1.2"/>
+          <!-- Success Badge -->
+          <circle cx="24" cy="23" r="10" fill="#10b981"/>
+          <text x="24" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">✓</text>
+          <text x="44" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">onVerify(token)</text>
+          <text x="44" y="34" font-family="ui-monospace, monospace" font-size="9.5" fill="#3fd0ff">03AFcWeA7q9K_L8m2P1v... (200 OK)</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Floating Expo Pill on Side of Mockup -->
+    <g transform="translate(230, 480)">
+      <g class="anim-float-subtle">
+        <rect width="130" height="28" rx="14" fill="#0d0f27" stroke="url(#badge-glow-grad)" stroke-width="1.5" filter="url(#glow-cyan)"/>
+        <circle cx="16" cy="14" r="4" fill="#ffd56a"/>
+        <text x="28" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#e9ebfa" letter-spacing="0.5">EXPO READY</text>
+      </g>
+    </g>
+  </g>
+</svg>
