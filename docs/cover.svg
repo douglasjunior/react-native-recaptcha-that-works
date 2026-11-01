@@ -65,6 +65,9 @@
         transform-box: fill-box;
         transform-origin: center;
       }
+      .anim-rc-spin {
+        opacity: 0;
+      }
 
       @media (prefers-reduced-motion: no-preference) {
         .anim-star-twinkle {
@@ -194,7 +197,7 @@
   <g transform="translate(80, 0)">
     <!-- Pill Category -->
     <g transform="translate(0, 88)">
-      <rect width="292" height="32" rx="16" fill="rgba(139, 123, 255, 0.12)" stroke="#8b7bff" stroke-width="1.2"/>
+      <rect width="316" height="32" rx="16" fill="rgba(139, 123, 255, 0.12)" stroke="#8b7bff" stroke-width="1.2"/>
       <circle cx="18" cy="16" r="4" fill="#3fd0ff"/>
       <text x="32" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e9ebfa" letter-spacing="1">REACT NATIVE · GOOGLE RECAPTCHA</text>
     </g>
@@ -241,7 +244,7 @@
         <circle cx="26" cy="26" r="10" fill="rgba(139, 123, 255, 0.15)"/>
         <text x="26" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#8b7bff" text-anchor="middle">⚛</text>
         <text x="50" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" font-weight="700" fill="#e9ebfa">Expo &amp; Bare Workflow Compatibility</text>
-        <text x="50" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#9ba1c7">Zero native linking hassles; powered by react-native-webview modal bridge</text>
+        <text x="50" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#9ba1c7">No native code of its own; powered by react-native-webview modal bridge</text>
       </g>
     </g>
 

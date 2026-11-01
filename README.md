@@ -97,7 +97,7 @@ export default function App() {
 
 ## 💡 Why reCAPTCHA That Works?
 
-- ⚛️ **Expo & Bare React Native Compatible:** Seamlessly runs on managed Expo workflows and bare React Native applications without native pod linking or compilation headaches.
+- ⚛️ **Expo & Bare React Native Compatible:** Seamlessly runs on managed Expo workflows and bare React Native applications with no native code of its own beyond `react-native-webview`.
 - 🛡️ **reCAPTCHA v2 (Normal & Invisible):** Full support for interactive checkbox widgets, compact layouts, and background challenges triggered on demand.
 - 🏢 **Enterprise API Support:** Native support for Google Cloud reCAPTCHA Enterprise endpoints via the `enterprise` flag, custom `action` tagging, and domain overrides.
 - 🪟 **Fully Customizable Modal:** Tailor background styles, integrate custom `headerComponent`, `footerComponent`, and swap in your own custom `loadingComponent`.
